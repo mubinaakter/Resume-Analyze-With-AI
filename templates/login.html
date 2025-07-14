@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Analyze and Build Your Resume With AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/loginsignup.css') }}" />
+</head>
+<body style="background: url('{{ url_for('static', filename='images/bg-2.jpg') }}') no-repeat center center fixed; background-size: cover;">
+  <div class="menu">
+    <nav>
+      <div class="nav__header" id="home">
+        <div class="nav__logo">
+          <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" />
+          </a>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('product') }}">Product</a></li>
+          <li><a href="{{ url_for('product') }}">Service</a></li>
+          <li><a href="{{ url_for('product') }}">Resources</a></li>
+          <li><a href="{{ url_for('signup') }}" class="btnLogin">Sign Up</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="container" style="margin-top: 100px;">
+    <h2>Welcome Back</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('login') }}" method="post">
+      <label for="email">Email*</label>
+      <input type="text" name="email" id="email" placeholder="Enter Email" required />
+      <label for="password">Password*</label>
+      <input type="password" name="password" id="password" placeholder="Enter Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <p style="margin-top: 15px;">
+      Don't have an account? <a href="{{ url_for('signup') }}">Sign up here!</a>
+    </p>
+  </div>
+</body>
+</html>

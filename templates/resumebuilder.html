@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Live Resume Builder - Education, Experience & Projects</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+  /* Reset box sizing and base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(
+    135deg,
+    rgba(85, 80, 250, 0.24),
+    rgba(219, 18, 232, 0.18),
+    rgba(81, 218, 252, 0.35)
+  );
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 13px;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 90vh;
+}
+
+/* Editor panel styles */
+.editor {
+  width: 40%;
+  padding: 30px 25px;
+  background: #f9fafb;
+  overflow-y: auto;
+  box-sizing: border-box;
+  border-right: 2px solid #5550fa33;
+  color: #222;
+}
+
+.editor h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #5550fa, #db12e8, #51dafc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.editor label {
+  font-weight: 600;
+  display: block;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #444;
+}
+
+.editor input[type="text"],
+.editor textarea,
+.editor input[type="file"] {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 6px;
+  border: 1.5px solid #bbb;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  transition: border-color 0.3s ease;
+}
+
+.editor input[type="text"]:focus,
+.editor textarea:focus,
+.editor input[type="file"]:focus {
+  border-color: #5550fa;
+  outline: none;
+  box-shadow: 0 0 8px #5550faaa;
+}
+
+.editor textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+.education-entry,
+.experience-entry,
+.project-entry {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.btn-add-education,
+.btn-add-experience,
+.btn-add-project {
+  margin-top: 10px;
+  background: linear-gradient(90deg, #5550fa, #db12e8);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.btn-add-education:hover,
+.btn-add-experience:hover,
+.btn-add-project:hover {
+  background: linear-gradient(90deg, #db12e8, #5550fa);
+}
+
+.editor button.update,
+.editor button.download {
+  margin-top: 20px;
+  padding: 10px 0;
+  background: #5550fa;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  width: 48%;
+  box-shadow: 0 0 12px #5550faaa;
+  transition: background 0.3s ease;
+}
+
+.editor button.download {
+  background: #db12e8;
+  box-shadow: 0 0 12px #db12e8aa;
+}
+
+.editor button.update:hover {
+  background: #3b38c6;
+}
+
+.editor button.download:hover {
+  background: #b50ea7;
+}
+
+/* Preview panel */
+.preview {
+  width: 60%;
+  padding: 30px 40px;
+  overflow-y: auto;
+  background: #fff;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Resume box styling */
+.resume-box {
+  width: 100%;
+  max-width: 700px;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* Header section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header img {
+  width: 115px;
+  height: 115px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #adadad;
+  box-shadow: 0 0 12px #cecece99;
+}
+
+.info {
+  max-width: 75%;
+  text-align: left;
+}
+
+.info h1,
+.info p {
+  margin: 4px 0;
+}
+
+.info h1 {
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.info p span {
+  font-weight: 500;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Sections */
+.section {
+  margin-top: 15px;
+}
+
+.section h2 {
+  font-weight: 700;
+  font-size: 18px;
+  color: #282828;
+  border-bottom: 2px solid #d2d2d2;
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+}
+
+/* Text styles for items */
+.education-institution,
+.experience-role,
+.project-name {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 3px;
+  color: #333;
+}
+
+.education-title,
+.experience-description,
+.project-description {
+font-weight: 400;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  margin-top: 3px;
+}
+
+#p_objective {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Skills list */
+#p_skills {
+  padding-left: 20px;
+  margin: 0;
+}
+
+#p_skills li {
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #555;
+  list-style-type: disc;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+    font-size: 12px;
+  }
+  .container {
+    height: auto;
+    max-width: 95vw;
+    margin: 20px auto;
+    flex-direction: column;
+  }
+  .editor,
+  .preview {
+    width: 100%;
+    max-height: 60vh;
+  }
+  .preview {
+    padding: 20px;
+  }
+  .resume-box {
+    padding: 25px;
+  }
+  .editor button.update,
+  .editor button.download {
+    width: 48%;
+    margin-right: 4%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="editor">
+    <h2>Edit Resume</h2>
+    <label>Upload Profile Photo:</label>
+    <input type="file" id="photoUpload" accept="image/*">
+
+    <label>Name:</label>
+    <input type="text" id="name" value="Jane Doe">
+    <label>Title:</label>
+    <input type="text" id="title" value="Full Stack Developer">
+    <label>Phone:</label>
+    <input type="text" id="phone" value="+8801234567890">
+    <label>Email:</label>
+    <input type="text" id="email" value="jane.doe@example.com">
+    <label>Location:</label>
+    <input type="text" id="location" value="Dhaka, Bangladesh">
+
+    <label>Career Objective:</label>
+    <textarea id="objective">Motivated developer with 4+ years of experience in building scalable web applications and clean user interfaces with a focus on user experience and maintainability.</textarea>
+
+    <label>Education:</label>
+    <div id="educationContainer">
+      <div class="education-entry">
+        <input type="text" class="education-institution-input" placeholder="Institution name" value="University of XYZ" />
+        <input type="text" class="education-title-input" placeholder="Degree, CGPA, Year" value="B.Sc. in Computer Science, CGPA: 3.85, 2022" />
+      </div>
+    </div>
+    <button class="btn-add-education" onclick="addEducationEntry()">+ Add Education</button>
+
+    <label>Skills (use * for list):</label>
+    <textarea id="skills" rows="6">
+* JavaScript, TypeScript, Python
+* React, Vue, Next.js
+* Node.js, Express, Flask
+* MongoDB, MySQL, Firebase
+* UI/UX: Figma, Adobe XD
+    </textarea>
+
+    <label>Experience:</label>
+    <div id="experienceContainer">
+      <div class="experience-entry">
+        <input type="text" class="experience-role-input" placeholder="Job Title / Role" value="Full Stack Developer, TechSoft BD (2022 - Present)" />
+        <input type="text" class="experience-description-input" placeholder="Description / Details" value="Developed scalable web applications and REST APIs using Node.js and React, collaborating in agile teams." />
+      </div>
+    </div>
+    <button class="btn-add-experience" onclick="addExperienceEntry()">+ Add Experience</button>
+
+    <label>Projects:</label>
+    <div id="projectsContainer">
+      <div class="project-entry">
+        <input type="text" class="project-name-input" placeholder="Project Name" value="Task Manager App" />
+        <input type="text" class="project-description-input" placeholder="Project Description" value="Built a task management system with React and Firebase, supporting real-time collaboration and notifications." />
+      </div>
+    </div>
+    <button class="btn-add-project" onclick="addProjectEntry()">+ Add Project</button>
+
+    <button class="update" onclick="updatePreview()">Update Preview</button>
+    <button class="download" onclick="downloadPDF()">Download PDF</button>
+  </div>
+
+  <div class="preview" id="preview">
+    <div class="resume-box" id="resume">
+      <div class="header">
+        <div class="info">
+          <h1 id="p_name">Jane Doe</h1>
+          <p><span id="p_title">Full Stack Developer</span></p>
+          <p><span>Phone:</span> <span id="p_phone">+8801234567890</span></p>
+          <p><span>Email:</span> <span id="p_email">jane.doe@example.com</span></p>
+          <p><span>Location:</span> <span id="p_location">Dhaka, Bangladesh</span></p>
+        </div>
+        <img id="p_photo" src="https://via.placeholder.com/90x110" alt="Profile Photo">
+      </div>
+      <div class="section">
+        <h2>Career Objective</h2>
+        <p id="p_objective"></p>
+      </div>
+      <div class="section">
+        <h2>Education</h2>
+        <div id="p_education"></div>
+      </div>
+      <div class="section">
+        <h2>Skills</h2>
+        <ul id="p_skills"></ul>
+      </div>
+      <div class="section">
+        <h2>Experience</h2>
+        <div id="p_experience"></div>
+      </div>
+      <div class="section">
+        <h2>Projects</h2>
+        <div id="p_projects"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const photoUpload = document.getElementById('photoUpload');
+  const photoPreview = document.getElementById('p_photo');
+
+  photoUpload.addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        photoPreview.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  function addEducationEntry() {
+    const container = document.getElementById('educationContainer');
+    const div = document.createElement('div');
+    div.className = 'education-entry';
+    div.innerHTML = `
+      <input type="text" class="education-institution-input" placeholder="Institution name" />
+      <input type="text" class="education-title-input" placeholder="Degree, CGPA, Year" />
+    `;
+    container.appendChild(div);
+  }
+
+  function addExperienceEntry() {
+    const container = document.getElementById('experienceContainer');
+    const div = document.createElement('div');
+    div.className = 'experience-entry';
+    div.innerHTML = `
+      <input type="text" class="experience-role-input" placeholder="Job Title / Role" />
+      <input type="text" class="experience-description-input" placeholder="Description / Details" />
+    `;
+    container.appendChild(div);
+  }
+
+  function addProjectEntry() {
+    const container = document.getElementById('projectsContainer');
+    const div = document.createElement('div');
+    div.className = 'project-entry';
+    div.innerHTML = `
+      <input type="text" class="project-name-input" placeholder="Project Name" />
+      <input type="text" class="project-description-input" placeholder="Project Description" />
+    `;
+    container.appendChild(div);
+  }
+
+  function updatePreview() {
+    document.getElementById('p_name').innerText = document.getElementById('name').value.trim();
+    document.getElementById('p_title').innerText = document.getElementById('title').value.trim();
+    document.getElementById('p_phone').innerText = document.getElementById('phone').value.trim();
+    document.getElementById('p_email').innerText = document.getElementById('email').value.trim();
+    document.getElementById('p_location').innerText = document.getElementById('location').value.trim();
+    document.getElementById('p_objective').innerText = document.getElementById('objective').value.trim();
+
+    // Education - multiple entries
+    const eduEntries = document.querySelectorAll('.education-entry');
+    let eduHtml = '';
+    eduEntries.forEach(entry => {
+      const inst = entry.querySelector('.education-institution-input').value.trim();
+      const title = entry.querySelector('.education-title-input').value.trim();
+      if(inst || title) {
+        eduHtml += `<p class="education-institution">${inst}</p>`;
+        if(title) eduHtml += `<p class="education-title">${title}</p>`;
+      }
+    });
+    document.getElementById('p_education').innerHTML = eduHtml;
+
+    // Skills list
+    let skillsRaw = document.getElementById('skills').value.split('\n').filter(s => s.trim() !== '');
+    let skillsList = '';
+    skillsRaw.forEach(skill => {
+      skillsList += '<li>' + skill.replace(/^\*\s*/, '') + '</li>';
+    });
+    document.getElementById('p_skills').innerHTML = skillsList;
+
+    // Experience - multiple entries
+    const expEntries = document.querySelectorAll('.experience-entry');
+    let expHtml = '';
+    expEntries.forEach(entry => {
+      const role = entry.querySelector('.experience-role-input').value.trim();
+      const desc = entry.querySelector('.experience-description-input').value.trim();
+      if(role || desc) {
+        expHtml += `<p class="experience-role">${role}</p>`;
+        if(desc) expHtml += `<p class="experience-description">${desc}</p>`;
+      }
+    });
+    document.getElementById('p_experience').innerHTML = expHtml;
+
+    // Projects - multiple entries
+    const projEntries = document.querySelectorAll('.project-entry');
+    let projHtml = '';
+    projEntries.forEach(entry => {
+      const name = entry.querySelector('.project-name-input').value.trim();
+      const desc = entry.querySelector('.project-description-input').value.trim();
+      if(name || desc) {
+        projHtml += `<p class="project-name">${name}</p>`;
+        if(desc) projHtml += `<p class="project-description">${desc}</p>`;
+      }
+    });
+    document.getElementById('p_projects').innerHTML = projHtml;
+  }
+
+  function downloadPDF() {
+    const element = document.getElementById('resume');
+    html2pdf()
+      .set({
+        margin: 0.3,
+        filename: 'Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      })
+      .from(element)
+      .save();
+  }
+
+  window.onload = updatePreview;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  background-image: linear-gradient(135deg, rgba(85, 80, 250, 0.24), rgba(219, 18, 232, 0.18), rgba(81, 218, 252, 0.35));
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.upload-box {
+  background: #f9f9ff; /* very light lavender/blue */
+  padding: 0;
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(85, 80, 250, 0.3);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  color: #3a3e72;
+}
+
+/* Heading */
+h1 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: linear-gradient(45deg, #5550FA, #DB12E8, #51DAFC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  margin: 30px 0 0 0;
+}
+
+/* Labels */
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+  user-select: none;
+}
+
+/* Inputs: file and text */
+input[type="file"],
+input[type="text"] {
+  width: 92%;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  border: 1.5px solid #ddd;
+  font-size: 1rem;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.05);
+  transition: border-color 0.3s ease;
+}
+
+input[type="file"]:focus,
+input[type="text"]:focus {
+  border-color: #5550FA;
+  outline: none;
+  box-shadow: 0 0 8px #5550FAaa;
+}
+
+/* Small helper text */
+small {
+  display: block;
+  margin: -15px 0 15px 0;
+  font-size: 0.9rem;
+  color: #64748b;
+  user-select: none;
+}
+
+/* Button */
+button {
+  background: linear-gradient(90deg, #5550fa, #db12e8);
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 14px;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(83, 65, 248, 0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #412de7, #a307d9);
+  box-shadow: 0 10px 30px rgba(83, 65, 248, 0.7);
+}
+
+/* Back link */
+.back-link {
+  display: block;
+  text-align: center;
+  margin: -10px 0 20px 0;
+  font-size: 0.9rem;
+  color: #5550fa;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #db12e8;
+  text-decoration: underline;
+}

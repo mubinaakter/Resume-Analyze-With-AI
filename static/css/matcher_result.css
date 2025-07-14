@@ -1,0 +1,175 @@
+/* Global Reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  background-image: linear-gradient(
+    135deg,
+    rgba(85, 80, 250, 0.24),
+    rgba(219, 18, 232, 0.18),
+    rgba(81, 218, 252, 0.35)
+  );
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+/* Container Box */
+.container {
+  background: #fff;
+  max-width: 600px;
+  width: 90%;
+  border-radius: 20px;
+  padding: 30px 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  color: #333;
+}
+
+/* Heading Styles */
+h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  background: linear-gradient(90deg, #5550fa, #db12e8, #51dafc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Circular Meter Container */
+.circle-meter {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 40px auto;
+}
+
+/* SVG in Circle Meter */
+.circle-meter svg {
+  transform: rotate(-90deg);
+  width: 180px;
+  height: 180px;
+}
+
+/* Background Circle in Meter */
+.circle-meter circle.bg {
+  fill: none;
+  stroke: #e5e7eb;
+  stroke-width: 15;
+}
+
+/* Progress Circle in Meter */
+.circle-meter circle.progress {
+  fill: none;
+  stroke: #5550fa;
+  stroke-width: 15;
+  stroke-linecap: round;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  transition: stroke-dashoffset 1.8s ease-out;
+}
+
+/* Score Text in Circle Meter */
+.circle-meter .score-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #5550fa;
+  user-select: none;
+  text-shadow: 0 0 1px #5550fa99;
+}
+
+/* Match List Container */
+.match-list {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Single Match Item */
+.match-item {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Label and Score Row */
+.match-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+/* Progress Bar Container */
+.progress-bar {
+  background: #f0f2f7;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 20px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Progress Fill Inside Bar */
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #5550fa, #db12e8);
+  border-radius: 12px 0 0 12px;
+  width: 0;
+  transition: width 2s ease-out;
+  box-shadow: 0 0 8px #5550faaa;
+}
+
+/* Back Link Button */
+a.back-link {
+  display: inline-block;
+  margin-top: 35px;
+  font-size: 1rem;
+  color: #5550fa;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Back Link Hover */
+a.back-link:hover {
+  color: #db12e8;
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+  .container {
+    padding: 30px 20px;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  .circle-meter {
+    width: 140px;
+    height: 140px;
+  }
+  .circle-meter svg {
+    width: 140px;
+    height: 140px;
+  }
+  .circle-meter .score-text {
+    font-size: 2.4rem;
+  }
+  .match-label {
+    font-size: 0.95rem;
+  }
+}

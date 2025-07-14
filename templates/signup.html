@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup - Analyze and Build Your Resume With AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/loginsignup.css') }}" />
+</head>
+
+<body style="background: url('static/images/bg.jpg') no-repeat center center fixed; background-size: cover;">
+  <div class="menu">
+    <nav>
+      <div class="nav__header" id="home">
+        <div class="nav__logo">
+          <a href="{{ url_for('home') }}">
+            <img src="static/images/logo.png" alt="Logo" />
+          </a>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('product') }}">Product</a></li>
+          <li><a href="{{ url_for('product') }}">Service</a></li>
+          <li><a href="{{ url_for('product') }}">Resources</a></li>
+          <a href="/login" class="btnLogin">Login</a>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h2>Signup</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('signup') }}" method="post" novalidate>
+      <label for="username">Full Name*</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Enter Your Full Name"
+        value="{{ request.form.username or '' }}"
+        required
+      />
+
+      <label for="email">Email*</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter Your Email"
+        value="{{ request.form.email or '' }}"
+        required
+      />
+
+      <label for="phone">Phone*</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="Enter Your Phone"
+        value="{{ request.form.phone or '' }}"
+        required
+      />
+
+      <label for="password">Password*</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Enter Password"
+        required
+      />
+
+      <label for="confirm_password">Confirm Password*</label>
+      <input
+        type="password"
+        id="confirm_password"
+        name="confirm_password"
+        placeholder="Enter Confirm Password"
+        required
+      />
+      <button type="submit">Signup</button>
+    </form>
+    <p style="margin-top: 15px;">
+      Already have an account?
+      <a href="{{ url_for('login') }}">Login</a>
+    </p>
+  </div>
+</body>
+</html>

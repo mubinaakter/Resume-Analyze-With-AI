@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ user.username }} - Profile</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+</head>
+<body>
+  <div class="boxed-container">
+    <div class="avatar">
+      <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Picture" />
+    </div>
+
+    <h1>{{ user.username }}</h1>
+    <p>Welcome to your profile. Manage and view your details here.</p>
+
+    <div class="info">
+      <div class="info-item">
+        <i class="fas fa-user"></i>
+        <span>{{ user.username }}</span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <span>{{ user.email }}</span>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-phone"></i>
+        <span>{{ user.phone }}</span>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a href="{{ url_for('dashboard') }}"><i class="fas fa-arrow-left"></i> Dashboard</a>
+      <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div>
+</body>
+</html>

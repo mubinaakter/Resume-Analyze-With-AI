@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume Analysis Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}" />
+  <script src="{{ url_for('static', filename='js/result.js') }}"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+
+    <svg width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#5550FA" />
+          <stop offset="50%" stop-color="#DB12E8" />
+          <stop offset="100%" stop-color="#51DAFC" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="scores-box" role="region" aria-label="Resume scores summary">
+      <h2>Resume Scores</h2>
+      <div class="total-score-circle" role="img" aria-label="Total resume score {{ score }} out of 100">
+        <svg width="150" height="150" viewBox="0 0 150 150" aria-hidden="true" focusable="false">
+          <circle class="bg" cx="75" cy="75" r="60"></circle>
+          <circle class="progress" cx="75" cy="75" r="60"></circle>
+        </svg>
+        <div class="score-number">{{ score }}</div>
+        <div class="score-max">/100</div>
+      </div>
+
+      <div class="score-list" role="list" aria-label="Detailed category scores">
+        {% for item in results %}
+          <div class="score-item" role="listitem">
+            <div class="score-label">
+              <span>{{ item.category }}</span>
+              <span>{{ item.score }}/{{ item.max_score }}</span>
+            </div>
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="{{ item.max_score }}" aria-valuenow="{{ item.score }}">
+              <div class="progress-fill" style="width: {{ (item.score / item.max_score) * 100 }}%;"></div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="details-section">
+      {% for item in results %}
+        {% if item.flaws or item.fix_tips or item.suggestions %}
+          <section class="category-box" aria-labelledby="category-{{ loop.index }}">
+            {% if item.flaws %}
+              <h3 id="category-{{ loop.index }}" class="issues">Issues in {{ item.category }}</h3>
+              <ul>
+                {% for flaw in item.flaws %}
+                  <li>{{ flaw }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            {% if item.fix_tips %}
+              <h3 class="fix-tips">How to Fix Issues in {{ item.category }}</h3>
+              <ul>
+                {% for tip in item.fix_tips %}
+                  <li>{{ tip }}</li>
+                {% endfor %}
+              </ul>
+              <p>Improving your {{ item.category | lower }} will enhance ATS compatibility and recruiter impressions.</p>
+            {% endif %}
+            {% if item.suggestions %}
+              <h3 class="suggestions">Suggestions for {{ item.category }}</h3>
+              <ul>
+                {% for suggestion in item.suggestions %}
+                  <li>{{ suggestion }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </section>
+        {% endif %}
+      {% endfor %}
+
+      <section class="category-box youtube-links" aria-label="Recommended YouTube videos for resume improvement">
+        <h3>Recommended YouTube Videos for Improving Your Resume</h3>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=Qb1iLJWuuGU" target="_blank" rel="noopener noreferrer">How to Write a Resume - Jeff Su</a></li>
+          <li><a href="https://www.youtube.com/watch?v=ZQH5FhLMeiE" target="_blank" rel="noopener noreferrer">Resume That Gets You Hired - Linda Raynier</a></li>
+          <li><a href="https://www.youtube.com/watch?v=8tYcEQ5s0cY" target="_blank" rel="noopener noreferrer">5 Resume Tips - Andrew LaCivita</a></li>
+          <li><a href="https://www.youtube.com/watch?v=xoORlr-NRIs" target="_blank" rel="noopener noreferrer">Beat ATS - Cultivated Culture</a></li>
+        </ul>
+      </section>
+    </div>
+    <a href="{{ url_for('upload_resume') }}" class="button" role="button">Analyze Another Resume</a>
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const totalScore = {{ score }};
+  const circumference = 377; // for r=60 (2 * Math.PI * 60)
+  const offset = circumference - (circumference * totalScore) / 100;
+  const progressCircle = document.querySelector('.total-score-circle circle.progress');
+
+  if (progressCircle) {
+    progressCircle.style.strokeDashoffset = circumference;
+    setTimeout(() => {
+      progressCircle.style.transition = 'stroke-dashoffset 2s ease';
+      progressCircle.style.strokeDashoffset = offset;
+    }, 100);
+  }
+
+  document.querySelectorAll('.progress-fill').forEach(el => {
+    const width = el.style.width;
+    el.style.width = '0';
+    setTimeout(() => {
+      el.style.width = width;
+    }, 150);
+  });
+});
+</script>
+</body>
+</html>

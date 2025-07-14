@@ -1,0 +1,236 @@
+/* Body and Background Setup */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  background-image: linear-gradient(135deg, rgba(85, 80, 250, 0.24), rgba(219, 18, 232, 0.18), rgba(81, 218, 252, 0.35));
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+/* Main Container Flexbox Layout */
+.container {
+  max-width: 1000px;
+  background: #f9f9ff47;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(85, 80, 250, 0.13);
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 20px 20px 0;
+  margin: 20px 0;
+}
+
+/* Score Box Styling */
+.scores-box {
+  flex: 1 1 280px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(85, 80, 250, 0.2);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Score Box Heading */
+.scores-box h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #5550FA, #DB12E8, #51DAFC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Total Score Circle Container */
+.total-score-circle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 24px;
+}
+
+/* SVG for Circle Score */
+.total-score-circle svg {
+  transform: rotate(-90deg);
+  width: 150px;
+  height: 150px;
+}
+
+/* Background Circle Style */
+.total-score-circle circle.bg {
+  fill: none;
+  stroke: #d6d9f7;
+  stroke-width: 12;
+}
+
+/* Progress Circle Style */
+.total-score-circle circle.progress {
+  fill: none;
+  stroke: url(#grad1);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  transition: stroke-dashoffset 2s ease;
+}
+
+/* Score Number Display */
+.score-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #5550FA;
+}
+
+/* Max Score Label */
+.score-max {
+  position: absolute;
+  bottom: 36px;
+  right: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #5550FA;
+}
+
+/* Score List Container */
+.score-list {
+  width: 100%;
+}
+
+/* Individual Score Item */
+.score-item {
+  margin-bottom: 16px;
+}
+
+/* Label for Each Score */
+.score-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #44416f;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+/* Progress Bar Background */
+.progress-bar {
+  background: #e3e6fc;
+  border-radius: 10px;
+  height: 14px;
+  overflow: hidden;
+}
+
+/* Progress Bar Fill */
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #5550FA, #DB12E8, #51DAFC);
+  border-radius: 10px 0 0 10px;
+  width: 0;
+  transition: width 2s ease;
+}
+
+/* Details Section Layout */
+.details-section {
+  flex: 2 1 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Category Box Styling */
+.category-box {
+  background: #f6f8ff;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(85, 80, 250, 0.1);
+  padding: 20px;
+}
+
+/* Category Title */
+.category-box h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #5550FA;
+}
+
+/* List Styling */
+ul {
+  margin: 0 0 10px 20px;
+  font-size: 0.9rem;
+  color: #3a3e72;
+}
+
+/* List Item Styling */
+li {
+  margin-bottom: 6px;
+}
+
+/* Specific Text Colors */
+.issues { color: #d93f3f; }
+.fix-tips { color: #3b53c3; }
+.suggestions { color: #0fbd8f; }
+
+/* Paragraph in Category Box */
+.category-box p {
+  font-size: 0.9rem;
+  color: #5550FA;
+  margin-top: 0;
+}
+
+/* YouTube Links Section */
+.youtube-links {
+  background: #e9f0ff;
+  border-radius: 14px;
+  padding: 18px;
+  font-size: 0.9rem;
+}
+
+/* YouTube Link Styling */
+.youtube-links a {
+  color: #5550FA;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* YouTube Link Hover */
+.youtube-links a:hover {
+  text-decoration: underline;
+}
+
+/* Button Styling */
+.button {
+  display: block;
+  max-width: 220px;
+  margin: 30px auto 0;
+  background: linear-gradient(45deg, #5550FA, #DB12E8, #51DAFC);
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(85, 80, 250, 0.5);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Button Hover Effect */
+button:hover {
+  background: linear-gradient(90deg, #412de7, #a307d9);
+  box-shadow: 0 10px 30px rgb(83 65 248 / 0.7);
+}
+
+/* Responsive Layout for Small Screens */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+}

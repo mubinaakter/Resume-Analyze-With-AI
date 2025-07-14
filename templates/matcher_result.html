@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume Matcher - Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/matcher_result.css') }}" />
+  <script src="{{ url_for('static', filename='js/matcher_result.js') }}"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div class="container">
+    <h2>Top Resume Matches</h2>
+
+    <div
+      class="circle-meter"
+      role="img"
+      aria-label="Top score: {{ (similarity_scores[0] * 100) | round(0) }} percent"
+    >
+      <svg width="180" height="180" viewBox="0 0 180 180" aria-hidden="true" focusable="false">
+        <circle class="bg" cx="90" cy="90" r="70" />
+        <circle class="progress" cx="90" cy="90" r="70" />
+      </svg>
+      <div class="score-text" aria-live="polite">{{ (similarity_scores[0] * 100) | round(0) }}%</div>
+    </div>
+
+    <div
+      class="match-list"
+      role="list"
+      aria-label="List of matched resumes and scores"
+    >
+      {% for index in range(top_resumes|length) %}
+      <div class="match-item" role="listitem">
+        <div class="match-label">
+          <span>{{ top_resumes[index] }}</span>
+          <span>{{ (similarity_scores[index] * 100) | round(0) }}%</span>
+        </div>
+        <div
+          class="progress-bar"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="{{ (similarity_scores[index] * 100) | round(0) }}"
+        >
+          <div
+            class="progress-fill"
+            style="width: {{ (similarity_scores[index] * 100) | round(0) }}%;"
+          ></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <a href="{{ url_for('matchresume') }}" class="back-link">← Match More Resumes</a>
+  </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const score = {{ (similarity_scores[0] * 100) | round(0) }};
+  const circumference = 440; // Circle circumference for r=70 (2 * PI * r)
+  const offset = circumference - (circumference * score) / 100;
+
+  const circle = document.querySelector('.circle-meter circle.progress');
+  circle.style.strokeDashoffset = offset;
+
+  document.querySelectorAll('.progress-fill').forEach((bar) => {
+    const targetWidth = bar.style.width;
+    bar.style.width = '0';
+    setTimeout(() => {
+      bar.style.width = targetWidth;
+    }, 150);
+  });
+});
+</script>
+</body>
+</html>

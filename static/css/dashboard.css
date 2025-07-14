@@ -1,0 +1,160 @@
+/* Body with gradient background and centered flex layout */
+body {
+    margin: 0;
+    background: linear-gradient(135deg, rgba(85, 80, 250, 0.5), rgba(219, 18, 232, 0.5), rgba(81, 218, 252, 0.5)), #1a1a2e;
+    font-family: 'Poppins', sans-serif;
+    color: #f9fafb;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container with rounded corners and max width */
+.boxed-container {
+    border-radius: 18px;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0px 10px;
+    margin-top: -100px;
+}
+
+/* Navbar layout with space-between alignment */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar logo image size */
+.navbar img {
+    height: 40px;
+}
+
+/* Navigation links horizontal layout */
+.nav__links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation link styling */
+.nav__links a {
+    color: #f9fafb;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1.5px solid transparent;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.3s, border 0.3s;
+}
+
+/* Change nav link background and border on hover */
+.nav__links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #624af8;
+}
+
+/* Header content container with centered text */
+.header__content {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* Header main title */
+.header__content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+/* Header subtitle text */
+.header__content p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #d1d5db;
+    font-size: 1rem;
+}
+
+/* Steps section with flexible wrapping cards */
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Card styling with glass effect */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    padding: 25px 20px;
+    flex: 1 1 260px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Lift card and add shadow on hover */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Card heading */
+.card h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+/* Card paragraph text */
+.card p {
+    color: #d1d5db;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+/* Decorative line under headings */
+.line {
+    width: 40px;
+    height: 3px;
+    background: #624af8;
+    margin: 0 auto 15px auto;
+    border-radius: 2px;
+}
+
+/* Watch now button styling */
+.watch-now {
+    display: inline-block;
+    background: #624af8;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.3s;
+}
+
+/* Darken button and lift slightly on hover */
+.watch-now:hover {
+    background: #4b3bbd;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .steps {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ user.username }} - Dashboard Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+</head>
+<body>
+  <div class="boxed-container">
+    <nav class="navbar">
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Analyzer Logo" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="{{ url_for('dashboard') }}" class="active">Dashboard</a></li>
+        <li>
+          <a href="{{ url_for('profile') }}">
+            <i class="fas fa-user"></i> Profile
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <header class="header__content">
+      <h1>Welcome, {{ user.username }}!</h1>
+      <p>
+        Analyze, match, and build your resume with AI-powered insights to
+        advance your career.
+      </p>
+    </header>
+
+    <section class="steps">
+      <div class="card">
+        <h2>Resume Analyzer</h2>
+        <p>Get a detailed analysis of your resume with actionable AI insights.</p>
+        <div class="line"></div>
+        <a href="{{ url_for('upload_resume') }}" class="watch-now">Analyze Now</a>
+      </div>
+
+      <div class="card">
+        <h2>Resume Matcher</h2>
+        <p>Match your resume against job descriptions to optimize your fit.</p>
+        <div class="line"></div>
+        <a href="{{ url_for('matchresume') }}" class="watch-now">Match Resume</a>
+      </div>
+
+      <div class="card">
+        <h2>Resume Builder</h2>
+        <p>Build a professional resume with clean, effective templates and guidance.</p>
+        <div class="line"></div>
+        <a href="{{ url_for('resumebuilder') }}" class="watch-now">Build Resume</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

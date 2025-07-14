@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Resume - Resume Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="upload-box" role="main" aria-label="Upload your resume form">
+    <h1>Upload Your Resume</h1>
+    <form
+      method="POST"
+      enctype="multipart/form-data"
+      action="{{ url_for('upload_resume') }}"
+      style="padding: 35px;"
+      novalidate
+    >
+      <label for="resume">Select PDF or DOCX File</label>
+      <input
+        type="file"
+        id="resume"
+        name="resume"
+        accept=".pdf,.docx"
+        required
+        aria-required="true"
+      />
+
+      <label for="target_keywords">Target Job Keywords (comma separated)</label>
+      <input
+        type="text"
+        id="target_keywords"
+        name="target_keywords"
+        placeholder="e.g. Python, Data Analysis, Django"
+        aria-describedby="keywords-help"
+      />
+      <small id="keywords-help">Provide keywords to tailor your resume score.</small>
+
+      <button type="submit" aria-label="Analyze Resume" class="btn-submit">
+        Analyze Resume
+      </button>
+    </form>
+    <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+  </main>
+</body>
+</html>

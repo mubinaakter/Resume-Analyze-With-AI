@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+  <title>Analyze or Build Your Resume With AI</title>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="nav__header" id="home">
+        <div class="nav__logo">
+          <a href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" />
+          </a>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('product') }}">Product</a></li>
+          <li><a href="{{ url_for('product') }}">Service</a></li>
+          <li><a href="{{ url_for('product') }}">Resources</a></li>
+          <li><a href="/login" class="btnLogin">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="section__container header__container">
+      <div class="header__content">
+        <h1>
+          Build &amp; Analyze <br />
+          Your Resume <br />
+          With AI
+        </h1>
+        <p class="section__description">
+          Effortlessly Craft a Standout Resume with Our AI-Powered <br />
+          Builder
+        </p>
+        <div class="header__btns" style="margin-top: 40px;">
+          <a href="/login" class="btn">Get Started</a>
+        </div>
+      </div>
+      <div class="header__image">
+        <img src="{{ url_for('static', filename='images/photo-1.png') }}" alt="Header Image" />
+      </div>
+    </header>
+
+    <section>
+      <div class="logos">
+        <img
+          src="{{ url_for('static', filename='images/logos.jpg') }}"
+          alt="Logos"
+          style="width: 100%; margin-bottom: 50px;"
+        />
+      </div>
+    </section>
+
+    <section class="section__container section__containers">
+      <div class="section__content">
+        <h1>Resume Analyzer</h1>
+        <hr style="color: #cde0f3; width: 20%; height: 10%;" />
+        <p class="section__p">
+          Improve your resume with Resume Analyzer! Get instant insights, keyword suggestions, and formatting tips to boost your job prospects. Try it now!
+        </p>
+        <div class="header__btns" style="margin-top: 40px;">
+          <a
+            href="/login"
+            class="btn"
+            style="
+              background: #0278ea;
+              color: white;
+              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
+                0 4px 10px 0 rgba(0, 0, 0, 0.19);
+            "
+            >Analyzer</a
+          >
+        </div>
+      </div>
+      <div class="section__image" style="width: 110%; margin-top: 30px; margin-right: -65px;">
+        <img src="{{ url_for('static', filename='images/photo-3.webp') }}" alt="Resume Analyzer Image" />
+      </div>
+    </section>
+
+    <section
+      class="section__container section__containers"
+      style="text-align: end; background: #e5f3cc;"
+    >
+      <div class="section__image" style="width: 120%; margin-top: 30px; margin-left: -65px;">
+        <img src="{{ url_for('static', filename='images/photo-4.png') }}" alt="Resume Matching Image" />
+      </div>
+      <div class="section__content">
+        <h1>Resume Matching</h1>
+        <hr style="color: #53daa2; width: 20%; height: 10%; margin-left: 327px;" />
+        <p class="section__p">
+          Improve your resume with Resume Analyzer! Get instant insights, keyword suggestions, and formatting tips to boost your job prospects. Try it now!
+        </p>
+        <div class="header__btns" style="margin-top: 40px;">
+          <a
+            href="/login"
+            class="btn"
+            style="
+              background: #6ad2b4;
+              color: white;
+              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
+                0 4px 10px 0 rgba(0, 0, 0, 0.19);
+            "
+            >Matching</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container section__containers">
+      <div class="section__content">
+        <h1>Resume Build</h1>
+        <hr style="color: #cde0f3; width: 20%; height: 10%;" />
+        <p class="section__p">
+          Improve your resume with Resume Analyzer! Get instant insights, keyword suggestions, and formatting tips to boost your job prospects. Try it now!
+        </p>
+        <div class="header__btns" style="margin-top: 40px;">
+          <a
+            href="/login"
+            class="btn"
+            style="
+              background: #424f5f;
+              color: white;
+              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
+                0 4px 10px 0 rgba(0, 0, 0, 0.19);
+            "
+            >Analyzer</a
+          >
+        </div>
+      </div>
+      <div class="section__image" style="width: 110%; margin-top: 30px; margin-right: -65px;">
+        <img src="{{ url_for('static', filename='images/photo-2.png') }}" alt="Resume Builder Image" />
+      </div>
+    </section>
+
+    <footer class="section__container footer__container">
+      <p>&copy; 2024 Analyze. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>

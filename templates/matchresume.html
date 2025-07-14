@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume Matcher - Upload</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/matchresume.css') }}" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">Job Description &amp; Resume Matcher</div>
+
+    <form method="POST" action="/matcher" enctype="multipart/form-data" novalidate>
+      <label for="job_description">Job Description:</label>
+      <textarea
+        id="job_description"
+        name="job_description"
+        rows="5"
+        placeholder="Enter the job description..."
+        required
+      >{{ request.form.job_description or '' }}</textarea>
+
+      <label for="resumes">Upload Resumes:</label>
+      <small>Upload at least 5 resumes (PDF, DOCX, TXT)</small>
+      <input
+        type="file"
+        id="resumes"
+        name="resumes"
+        multiple
+        required
+        accept=".pdf,.docx,.txt"
+      />
+
+      <button type="submit">Match Resumes</button>
+    </form>
+
+    <a href="/dashboard" class="back-link">Back to Dashboard</a>
+  </div>
+</body>
+</html>

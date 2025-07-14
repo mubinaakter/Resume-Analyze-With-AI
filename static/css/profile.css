@@ -1,0 +1,111 @@
+/* Body Styles */
+body {
+  margin: 0;
+  background: linear-gradient(135deg, rgba(85, 80, 250, 0.5), rgba(219, 18, 232, 0.5), rgba(81, 218, 252, 0.5)), #1a1a2e;
+  font-family: 'Poppins', sans-serif;
+  color: #f9fafb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Boxed Container Card */
+.boxed-container {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px 25px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Avatar Image */
+.avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #624af8;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+}
+
+/* Heading Text */
+h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: #ffffff;
+}
+
+/* Paragraph Text */
+p {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  margin: 0 0 20px 0;
+}
+
+/* Info Section */
+.info {
+  text-align: left;
+  margin-top: 20px;
+}
+
+/* Info Item Boxes */
+.info-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f9fafb;
+  font-size: 0.95rem;
+}
+
+/* Icon Inside Info Item */
+.info-item i {
+  color: #624af8;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Button Container */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.buttons a {
+  background: #624af8;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.3s, transform 0.3s;
+}
+
+/* Button Hover Effect */
+.buttons a:hover {
+  background: #4b3bbd;
+  transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 450px) {
+  .boxed-container {
+    padding: 25px 20px;
+  }
+}
