@@ -36,17 +36,40 @@ This project aims to help job seekers understand how their resumes align with ta
 ```bash
 git clone https://github.com/yourusername/resume-analyzer.git
 
+
 2️⃣ Navigate into the project directory:
 
 ```bash
 cd resume-analyzer
+
 
 3️⃣ Install all required dependencies:
 
 ```bash
 pip install -r requirements.txt
 
+
 4️⃣ Run the Streamlit app locally:
 
 ```bash
 streamlit run app.py
+
+
+## 📈 Usage
+
+1️⃣ Upload your resume (PDF/DOCX).
+2️⃣ View extracted data and keyword clusters.
+3️⃣ See recommendations for improving your resume.
+4️⃣ Check analytics and keyword matching with sectors.
+5️⃣ Refine your resume based on insights provided.
+
+## 📂 Project Structure
+
+resume-analyzer/
+├── app.py
+├── utils/
+│   ├── parser.py
+│   ├── analyzer.py
+│   └── recommender.py
+├── requirements.txt
+└── README.md
