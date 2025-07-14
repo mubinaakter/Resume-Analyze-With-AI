@@ -35,3 +35,18 @@ This project aims to help job seekers understand how their resumes align with ta
 
 ```bash
 git clone https://github.com/yourusername/resume-analyzer.git
+
+2️⃣ Navigate into the project directory:
+
+```bash
+cd resume-analyzer
+
+3️⃣ Install all required dependencies:
+
+```bash
+pip install -r requirements.txt
+
+4️⃣ Run the Streamlit app locally:
+
+```bash
+streamlit run app.py
