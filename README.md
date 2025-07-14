@@ -33,10 +33,17 @@ This project aims to help job seekers understand how their resumes align with ta
 
 resume-analyzer/
 - ├── app.py
-- ├── utils/
-- │   ├── parser.py
-- │   ├── analyzer.py
-- │   └── recommender.py
+- ├── instance/
+- │   ├── analyzer.db
+- ├── templates/
+- │   ├── dashboard.html
+- │   ├── home.html
+- │   └── login.html
+- │   └── matcher_result.html
+- │   └── '''
+- │   └── upload.html
+- ├── uploads/
+- │   ├── uploads_cv
 - ├── requirements.txt
 - └── README.md
 
